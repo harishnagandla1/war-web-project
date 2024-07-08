@@ -16,7 +16,7 @@ node {
     }
 
     stage('Deploay') {
-        deploy adapters: [tomcat9(credentialsId: 'MyTomCat', path: '', url: 'http://192.168.29.110:9999/')], contextPath: 'cal', war: '**/*.jar'
+        deploy adapters: [tomcat9(credentialsId: 'MyTomCat', path: '', url: 'http://192.168.29.110:9999/')], contextPath: 'wwa', war: '**/*.jar'
     }
 
     stage('Notification') {
