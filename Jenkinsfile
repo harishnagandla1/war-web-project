@@ -11,10 +11,6 @@ node {
         archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
     }
 
-    stage('GenrateReports') {
-       publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'reports\\', reportFiles: '*.html', reportName: 'Extent Report', reportTitles: '', useWrapperFileDirectly: true])
-    }
-
     stage('Deploay') {
         deploy adapters: [tomcat9(credentialsId: 'MyTomCat', path: '', url: 'http://192.168.29.110:9999/')], contextPath: 'wwa', war: '**/*.jar'
     }
