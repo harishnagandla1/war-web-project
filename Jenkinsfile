@@ -8,11 +8,11 @@ node {
        bat 'mvn clean package'
     }
     stage('Archive') {
-        archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
+        archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
     }
 
     stage('Deploay') {
-        deploy adapters: [tomcat9(credentialsId: 'MyTomCat', path: '', url: 'http://192.168.29.110:9999/')], contextPath: 'wwa', war: '**/*.jar'
+        deploy adapters: [tomcat9(credentialsId: 'MyTomCat', path: '', url: 'http://192.168.29.110:9999/')], contextPath: 'wwa', war: '**/*.war'
     }
 
     stage('Notification') {
